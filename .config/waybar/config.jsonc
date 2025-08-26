@@ -1,0 +1,219 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 24, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    "margin-left": 3,
+    "margin-right": 3,
+    "margin-top": 3,
+
+    "modules-left": [
+	"custom/empty",
+        "hyprland/workspaces",
+	"custom/playerctl"
+    ],
+    "modules-center": [
+	"clock"
+    ],
+    "modules-right": [
+        "tray",
+        "hyprland/language",
+	"custom/vpnstatus",
+	"network",
+        "pulseaudio",
+	"backlight",
+        "battery#bat0",
+        "battery#bat1",
+	"custom/empty"
+    ],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        "format": "{name}",
+	"persistent-workspaces": {
+	    "1": "1",
+	    "2": "2",
+	    "3": "3",
+	    "4": "4",
+	    "5": "5"
+	}
+    },
+
+    "custom/expand": {
+	"format": "% ",
+	"tooltip": false
+    },
+
+    "group/expand": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 600,
+            "transition-to-left": true,
+            "click-to-reveal": true
+        },
+        "modules": ["custom/expand","cpu","memory","temperature"]
+    },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "hyprland/language":  {
+        "format": "Lan: {}",
+        "format-en": "en",
+	"format-lt": "lt",
+	"on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10,
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+
+    "clock": {
+        // "timezone": "Europe/London",
+	"format": "{:%a %e %b %Y  | %X}",
+	"interval": 1,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "Cpu: {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "Mem: {}%"
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "Tem: {temperatureC}°C"
+    },
+
+    "battery#bat0": {
+	"bat": "BAT0",
+	"interval": 5,
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "Bat0: {capacity}%",
+        "format-full": "Bat0: {capacity}%",
+        "format-charging": "Bat0: {capacity}%",
+        "format-plugged": "Bat0: {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "battery#bat1": {
+	"bat": "BAT1",
+	"interval": 5,
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "Bat1: {capacity}%",
+        "format-full": "Bat1: {capacity}%",
+        "format-charging": "Bat1: {capacity}%",
+        "format-plugged": "Bat1: {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "Net: {signalStrength}%",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Net: X%"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "Bri: {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "Vol: {volume}%  Mic:{format_source}",
+        "format-muted": "Vol: X%  Mic:{format_source}",
+        "format-source": " {volume}%",
+       "format-source-muted": " X%",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" ", " ", " "]
+        }, "on-click": "pavucontrol"
+    },
+
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+
+    "custom/power": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    },
+
+    "custom/vpnstatus": {
+	 "format": "{}",
+	 "interval": 3,
+	 "exec": "~/scripts/statusVpn.sh"
+    },
+
+    "custom/playerctl": {
+      "format": "<span>{}</span>",
+      "return-type": "json",
+      "max-length": 45,
+      "exec": "playerctl -a metadata --format '{\"text\": \"  {{markup_escape(artist)}}  -  {{markup_escape(title)}} \", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click-middle": "playerctl previous",
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl next"
+    },
+
+    "custom/empty": {
+	 "format": " "
+    }
+}

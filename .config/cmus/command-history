@@ -1,0 +1,69 @@
+add Music/main/What the hip hop hell is this.mp3
+live-filter 
+live-filter L
+add Music/main/Who Shot Ya.mp3
+add Music/main/Let It All Work Out.mp3
+add Music/main/Let Go.mp3
+add Music/main/RIOT Rowdy Pipe.mp3
+add Music/main/Thinkin Bout You.mp3
+add Music/main/Mask Off remix.mp3
+add Music/main/Backseat Freestyle.mp3
+add Music/main/FYP.mp3
+add Music/main/Do For Love.mp3
+add Music/main/Yay Yay.mp3
+add Music/main/Yamborghini High (feat. Juicy J).mp3
+add Music/main/Mo Money Mo Problems.mp3
+add Music/main/Sprinter.mp3
+add Music/main/Im On One.mp3
+add Music/main/Be Somebody.mp3
+add Music/main/Praise The Lord.mp3
+add Music/main/OUT WEST.mp3
+add Music/main/The Recipe.mp3
+add Music/main/Jus Know.mp3
+add Music/main/California Love remix.mp3
+add Music/main/Real Muthaphuckkin Gs.mp3
+add Music/main/Mad Luv.mp3
+add Music/main/WHAT KIND OF RAPPIN IS THIS.mp3
+add Music/main/100 Racks.mp3
+add Music/main/Gangland.mp3
+add Music/main/Creature.mp3
+add Music/main/Making The Band.mp3
+add Music/main/All In.mp3
+add Music/main/Get A Hold.mp3
+add Music/main/Brown Skin Lady.mp3
+add Music/main/Fine Whine.mp3
+ę
+add Music/misc/Anglys.mp3
+q
+add Music/misc/Computer Talk.mp3
+update cache
+30000
+add Music/main/XO Tour Llif3.mp3
+add Music/main/HYFR _Hell Ya Fucking Right.mp3
+add Music/misc/
+pl-create misc
+wq
+3
+add Music/main/Wesley_s Theory.mp3
+add Music/breakcore/
+pl-create breakcore
+live-filter j
+add Music/breakcore/Mg1.mp3
+add Music/main/Takyon (Death Yon).mp3
+add Music/jp/
+pl-create jp
+add Music/main/
+pl-create main
+colorscheme dark
+colorscheme default
+color scheme default
+colorscheme cool
+colorscheme
+setscheme dark
+setscheme
+setscheme default
+colorscheme onedark
+filter 
+add ~/Music/jp/
+add ~/Music/breakcore/
+add ~/Music/main/
